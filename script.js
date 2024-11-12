@@ -37,7 +37,7 @@ items.forEach((item, index) => {
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: item,
-      start: "top 40%",
+      start: "top 30%",
       endTrigger: ".container",
       end: `bottom top+=${lastCardHeight}px`,
       pin: true,
