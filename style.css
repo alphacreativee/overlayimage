@@ -48,7 +48,7 @@ body {
   width: 690px;
   display: flex;
   position: relative;
-  box-shadow: 0 301px 361px #00000024;
+  /* box-shadow: 0 301px 361px #00000024; */
 }
 .strategies_static-image-wrapper {
   aspect-ratio: 1.85 / 1;
@@ -88,4 +88,20 @@ body {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
+}
+/* css card animation*/
+.card-animation {
+}
+.card {
+  width: 500px;
+  height: 300px;
+  background-color: red;
+  padding: 30px;
+  color: #fff;
+  font-size: 40px;
+}
+
+.card-animation {
+  margin: 0 auto;
+  width: 500px;
 }

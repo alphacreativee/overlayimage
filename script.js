@@ -1,43 +1,3 @@
-// gsap.registerPlugin(ScrollTrigger);
-
-// // Set initial transform on the element
-// gsap.set(".strategies_image", {
-//   y: 100,
-//   willChange: "transform",
-//   transformStyle: "preserve-3d",
-// });
-// gsap.set(".strategies_image-overlay", {
-//   y: 100,
-//   willChange: "transform",
-//   transformStyle: "preserve-3d",
-// });
-
-// // Animate with ScrollTrigger
-// gsap.to(".strategies_image", {
-//   y: 0, // Animates to translate3d(0px, 0px, 0px)
-//   easing: "ease",
-//   duration: 1000,
-//   scrollTrigger: {
-//     trigger: ".strategies_image-wrapper",
-//     start: "top 40%", // Start when the element is at the bottom of the viewport
-//     end: "top 20%", // End when the element reaches the center
-//     scrub: true, // Smooth animation synced with scroll
-//     markers: true,
-//   },
-// });
-// gsap.to(".strategies_image-overlay", {
-//   y: 0, // Animates to translate3d(0px, 0px, 0px)
-//   easing: "ease",
-//   duration: 1000,
-//   scrollTrigger: {
-//     trigger: ".strategies_image-wrapper",
-//     start: "top 40%", // Start when the element is at the bottom of the viewport
-//     end: "top 20%", // End when the element reaches the center
-//     scrub: true, // Smooth animation synced with scroll
-//     markers: true,
-//   },
-// });
-
 gsap.registerPlugin(ScrollTrigger);
 
 // Set initial transform on the elements
@@ -64,3 +24,37 @@ tl.to(".strategies_image", { y: 0, ease: "none" }).to(
   { y: 0, ease: "none" },
   "<"
 ); // The "<" aligns both animations to start simultaneously
+
+//////////////////
+
+const items = gsap.utils.toArray(".card");
+const lastCard = items[items.length - 1];
+
+// Calculate the height of the last card
+let lastCardHeight = lastCard.clientHeight;
+
+items.forEach((item, index) => {
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: item,
+      start: "top 40%",
+      endTrigger: ".container",
+      end: `bottom top+=${lastCardHeight}px`,
+      pin: true,
+      pinSpacing: false,
+      scrub: true,
+      markers: true,
+    },
+  });
+  if (item === lastCard) {
+    tl.to(item, {
+      scale: 1,
+      transformOrigin: "center center",
+    });
+  } else {
+    tl.to(item, {
+      scale: 0.8 + 0.02 * index,
+      transformOrigin: "center center",
+    });
+  }
+});
