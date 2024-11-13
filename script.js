@@ -55,7 +55,7 @@ function pinCard() {
   const lastCard = items[items.length - 1];
   let lastCardHeight = lastCard.clientHeight;
 
-  const backgroundDuration = lastCardHeight * (items.length + 2);
+  const backgroundDuration = lastCardHeight * (items.length + 1.65);
 
   gsap.timeline({
     scrollTrigger: {
@@ -74,7 +74,7 @@ function pinCard() {
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: item,
-        start: "top 30%",
+        start: "top 25%",
         endTrigger: ".container-card",
         end: `bottom top+=${lastCardHeight}px`,
         pin: true,
