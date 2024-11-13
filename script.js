@@ -54,18 +54,18 @@ function pinCard() {
   const items = gsap.utils.toArray(".card");
   const lastCard = items[items.length - 1];
   let lastCardHeight = lastCard.clientHeight;
-
-  const backgroundDuration = lastCardHeight * (items.length + 1.65);
+  let endPointImage =
+    document.querySelector(".card-animation").clientHeight - lastCardHeight;
 
   gsap.timeline({
     scrollTrigger: {
       trigger: ".background-image",
       start: "top top",
-      end: `+=${backgroundDuration}px`,
+      end: `+=${endPointImage}px`,
       pin: true,
       pinSpacing: false,
       scrub: true,
-      markers: true,
+      // markers: true,
     },
   });
 
@@ -80,7 +80,7 @@ function pinCard() {
         pin: true,
         pinSpacing: false,
         scrub: true,
-        markers: true,
+        // markers: true,
       },
     });
 
