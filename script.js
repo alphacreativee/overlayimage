@@ -1,15 +1,32 @@
 // A $( document ).ready() block.
 $(document).ready(function () {
-  console.log("ready!");
+  const lenis = new Lenis({
+    smooth: true,
+    easing: (t) => 1 - Math.pow(1 - t, 3), // Eases out the scroll
+    duration: 2, // Adjust for smoother scroll duration
+  });
+
+  lenis.on("scroll", (e) => {
+    console.log(e);
+  });
+
+  lenis.on("scroll", ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000); // Adjusting speed factor for smoother performance
+  });
+
+  gsap.ticker.lagSmoothing(0);
   parallaxImage();
   pinCard();
+  // Initialize Lenis
 });
 function parallaxImage() {
   gsap.registerPlugin(ScrollTrigger);
 
   // Set initial transform on the elements
   gsap.set([".strategies_image", ".strategies_image-overlay"], {
-    y: 100,
+    y: 120,
     willChange: "transform",
     transformStyle: "preserve-3d",
   });
@@ -18,17 +35,17 @@ function parallaxImage() {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".strategies_image-wrapper",
-      start: "top 30%",
-      end: "top 20%",
+      start: "top 40%",
+      end: "top top",
       scrub: true,
-      markers: true,
+      // markers: true,
     },
   });
 
   // Add animations to the timeline
-  tl.to(".strategies_image", { y: 0, ease: "none" }).to(
+  tl.to(".strategies_image", { y: 0, ease: "none", duration: 5 }).to(
     ".strategies_image-overlay",
-    { y: 0, ease: "none" },
+    { y: 0, ease: "none", duration: 5 },
     "<"
   ); // The "<" aligns both animations to start simultaneously
 }
