@@ -53,10 +53,23 @@ function parallaxImage() {
 function pinCard() {
   const items = gsap.utils.toArray(".card");
   const lastCard = items[items.length - 1];
-
-  // Calculate the height of the last card
   let lastCardHeight = lastCard.clientHeight;
 
+  const backgroundDuration = lastCardHeight * (items.length + 2);
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: ".background-image",
+      start: "top top",
+      end: `+=${backgroundDuration}px`,
+      pin: true,
+      pinSpacing: false,
+      scrub: true,
+      markers: true,
+    },
+  });
+
+  // Timeline for each card pinning and scaling
   items.forEach((item, index) => {
     let tl = gsap.timeline({
       scrollTrigger: {
@@ -70,6 +83,7 @@ function pinCard() {
         markers: true,
       },
     });
+
     if (item === lastCard) {
       tl.to(item, {
         scale: 1,
