@@ -35,10 +35,10 @@ function parallaxImage() {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".strategies_image-wrapper",
-      start: "top 40%",
+      start: "top 45%",
       end: "top top",
       scrub: true,
-      // markers: true,
+      markers: true,
     },
   });
 
