@@ -77,7 +77,7 @@ function pinCard() {
         start: "top 25%",
         endTrigger: ".container-card",
         end: `bottom top+=${lastCardHeight}px`,
-        pin: true,
+        // pin: true,
         pinSpacing: false,
         scrub: true,
         // markers: true,
