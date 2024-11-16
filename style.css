@@ -139,15 +139,12 @@ body {
 }
 .parallaxonde > use:nth-child(2) {
   animation-delay: -4s;
-  animation-duration: 10s;
+  animation-duration: 8s;
 }
-/* .parallaxonde > use:nth-child(4) {
-  animation-delay: -5s;
-  animation-duration: 20s;
-} */
+
 @keyframes move-forever {
   100% {
-    transform: translate3d(-90px, 0, 0);
+    transform: translate3d(-89px, 0, 0);
   }
   0% {
     transform: translate3d(85px, 0, 0);
